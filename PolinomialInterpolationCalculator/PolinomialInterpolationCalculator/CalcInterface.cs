@@ -27,19 +27,33 @@ namespace PolinomialInterpolationCalculator
         {
             if (e.KeyCode == Keys.Enter)
             {
+                if (YTxtB.Text != string.Empty && XTxtB.Text != string.Empty)
+                {
+                    Ys.Add(Convert.ToDouble(YTxtB.Text));
+                    Xs.Add(Convert.ToDouble(XTxtB.Text));
+                    System.Threading.Thread.Sleep(1000);
+                }
+                else
+                {
+                    MessageBox.Show("Error please add cordinate in x as in y");
+                }
                 YTxtB.Clear();
                 XTxtB.Clear();
                 e.Handled = true;
             }
         }
-
         private void XTxtB_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (YTxtB.Text != null && XTxtB != null)
+                if (YTxtB.Text != string.Empty && XTxtB.Text != string.Empty)
                 {
-                    
+                    Ys.Add(Convert.ToDouble(YTxtB.Text));
+                    Xs.Add(Convert.ToDouble(XTxtB.Text));
+                }
+                else
+                {
+                    MessageBox.Show("Error please add cordinate in x as in y"); 
                 }
 
                 YTxtB.Clear();
@@ -50,8 +64,34 @@ namespace PolinomialInterpolationCalculator
 
         private void CalculateBtn_Click(object sender, EventArgs e)
         {
-            var polfinder = new PolynomialFinder(); 
-            polfinder.FindPolynom()
+            var polfinder = new PolynomialFinder();
+            Resultlbl.Text =  polfinder.FindPolynom(Xs, Ys); 
+        }
+
+        private void AddBtn_Click(object sender, EventArgs e)
+        {
+            if (YTxtB.Text != string.Empty && XTxtB.Text != string.Empty)
+            {
+                Ys.Add(Convert.ToDouble(YTxtB.Text));
+                Xs.Add(Convert.ToDouble(XTxtB.Text));
+                System.Threading.Thread.Sleep(1000);
+            }
+            else
+            {
+                MessageBox.Show("Error please add cordinate in x as in y");
+            }
+            YTxtB.Clear();
+            XTxtB.Clear();
+        }
+
+        private void ResetBtn_Click(object sender, EventArgs e)
+        {
+            Xs.Clear();
+            Ys.Clear(); 
+            YTxtB.Clear();
+            XTxtB.Clear();
+            Resultlbl.Text = "Result"; 
+
         }
     }
 }

@@ -36,6 +36,7 @@
             this.Xlbl = new System.Windows.Forms.Label();
             this.YTxtB = new System.Windows.Forms.TextBox();
             this.XTxtB = new System.Windows.Forms.TextBox();
+            this.AddBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ResetBtn
@@ -46,6 +47,7 @@
             this.ResetBtn.TabIndex = 15;
             this.ResetBtn.Text = "Reset";
             this.ResetBtn.UseVisualStyleBackColor = true;
+            this.ResetBtn.Click += new System.EventHandler(this.ResetBtn_Click);
             // 
             // IntructionsLbl
             // 
@@ -99,7 +101,7 @@
             this.YTxtB.Location = new System.Drawing.Point(225, 141);
             this.YTxtB.Name = "YTxtB";
             this.YTxtB.Size = new System.Drawing.Size(100, 20);
-            this.YTxtB.TabIndex = 9;
+            this.YTxtB.TabIndex = 1;
             this.YTxtB.KeyUp += new System.Windows.Forms.KeyEventHandler(this.YTxtB_KeyUp);
             // 
             // XTxtB
@@ -107,14 +109,25 @@
             this.XTxtB.Location = new System.Drawing.Point(106, 141);
             this.XTxtB.Name = "XTxtB";
             this.XTxtB.Size = new System.Drawing.Size(100, 20);
-            this.XTxtB.TabIndex = 8;
+            this.XTxtB.TabIndex = 0;
             this.XTxtB.KeyUp += new System.Windows.Forms.KeyEventHandler(this.XTxtB_KeyUp);
+            // 
+            // AddBtn
+            // 
+            this.AddBtn.Location = new System.Drawing.Point(106, 167);
+            this.AddBtn.Name = "AddBtn";
+            this.AddBtn.Size = new System.Drawing.Size(219, 23);
+            this.AddBtn.TabIndex = 2;
+            this.AddBtn.Text = "Add";
+            this.AddBtn.UseVisualStyleBackColor = true;
+            this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
             // 
             // CalcInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.AddBtn);
             this.Controls.Add(this.ResetBtn);
             this.Controls.Add(this.IntructionsLbl);
             this.Controls.Add(this.CalculateBtn);
@@ -140,5 +153,6 @@
         private System.Windows.Forms.Label Xlbl;
         private System.Windows.Forms.TextBox YTxtB;
         private System.Windows.Forms.TextBox XTxtB;
+        private System.Windows.Forms.Button AddBtn;
     }
 }
