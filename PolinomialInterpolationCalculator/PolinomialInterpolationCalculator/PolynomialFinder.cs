@@ -8,18 +8,17 @@ namespace PolinomialInterpolationCalculator
 {
     class PolynomialFinder
     {
-
         public List<List<State>> StatesMatrix { get; set; }
 
         public PolynomialFinder()
         {
             StatesMatrix = new List<List<State>>();
         }
-        public string FindPolynom(double[] Xs, double[] Ys)
+        public string FindPolynom(List<double> Xs, List<double> Ys)
         {
             var B0 = new List<State>();
 
-            for (int i = 0; i < Xs.Length - 1; i++)
+            for (int i = 0; i < Xs.Count - 1; i++)
             {
                 B0[i].Up = Xs[i];
                 B0[i].Down = Xs[i + 1];
@@ -28,7 +27,7 @@ namespace PolinomialInterpolationCalculator
 
             StatesMatrix.Add(B0);
 
-            for (int i = 0; i < Xs.Length - 1; i++)
+            for (int i = 0; i < Xs.Count  - 1; i++)
             {
                 StatesMatrix.Add(CalculateColumn(Xs, Ys));
             }
@@ -38,11 +37,11 @@ namespace PolinomialInterpolationCalculator
             {
                 bs.Add(Column[0].Value); 
             }
-             
+            return $"{bs[0]} + {bs[1]} * (x - {Xs[1]}) + {bs[0]} * (x - {Xs[2]})";  
 
         }
 
-        public List<State> CalculateColumn(double[] Xs, double[] Ys)
+        public List<State> CalculateColumn(List<double> Xs,List<double> Ys)
         {
             var column = StatesMatrix[StatesMatrix.Count - 1];
             var newcolumn = new List<State>();

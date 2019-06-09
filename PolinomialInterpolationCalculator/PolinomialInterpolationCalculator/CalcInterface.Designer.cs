@@ -65,6 +65,7 @@
             this.CalculateBtn.TabIndex = 13;
             this.CalculateBtn.Text = "Calculate";
             this.CalculateBtn.UseVisualStyleBackColor = true;
+            this.CalculateBtn.Click += new System.EventHandler(this.CalculateBtn_Click);
             // 
             // Resultlbl
             // 
