@@ -26,16 +26,12 @@ namespace PolinomialInterpolationCalculator
                     new State(Xs[i], Xs[i + 1], ((Ys[i + 1] - Ys[i]) / (Xs[i + 1] - Xs[i])))
                     );
             }
-
             StatesMatrix.Add(B0);
-
             for (int i = 0; i < Xs.Count - 2; i++)
             {
-                Console.WriteLine($"Column Separator{StatesMatrix.Count - 1}");
-
+                
                 StatesMatrix.Add(CalculateColumn(StatesMatrix.Count - 1));
             }
-
             return StringCalculator(Xs, Ys);
         }
 
@@ -45,16 +41,12 @@ namespace PolinomialInterpolationCalculator
             var newcolumn = new List<State>();
             for (int i = 0; i < column.Count - 1; i++)
             {
-                Console.WriteLine($"up: {column[i].Up}, down:{column[i + 1].Down}, value: {lastColumnIndex}");
-
                 newcolumn.Add(
                     new State(
                         column[i].Value,
                         column[i + 1].Value,
                        ((column[i + 1].Value - column[i].Value) / (LowPartOfDivision(lastColumnIndex, column[i].Up, column[i + 1].Down)))
                         ));
-
-                Console.WriteLine($"total: {newcolumn[i].Value}");
             }
             return newcolumn;
         }
@@ -68,14 +60,13 @@ namespace PolinomialInterpolationCalculator
         {
             if (nOfColumn == 0)
             {
-                // Console.WriteLine($"down: {StatesMatrix[nOfColumn].ToList().FirstOrDefault(i => i.Down == Down).Down}");
-
                 return StatesMatrix[nOfColumn].ToList().FirstOrDefault(i => i.Down == Down).Down;
-
             }
             if (nOfColumn == 1)
             {
+
                 return StatesMatrix[nOfColumn - 1].ToList().FirstOrDefault(i => i.Value == Down).Down;
+
             }
 
             return CalculateDown(nOfColumn - 1, StatesMatrix[nOfColumn - 1].ToList().FirstOrDefault(i => i.Down == Down).Down);
@@ -86,7 +77,6 @@ namespace PolinomialInterpolationCalculator
         {
             if (nOfColumn == 0)
             {
-                // Console.WriteLine($"up:{StatesMatrix[nOfColumn].ToList().FirstOrDefault(i => i.Up == Up).Up} ");
                 return StatesMatrix[nOfColumn].ToList().FirstOrDefault(i => i.Up == Up).Up;
             }
             if (nOfColumn == 1)
